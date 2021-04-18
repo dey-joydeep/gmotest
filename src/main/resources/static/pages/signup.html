@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Test- Sign up</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+<link href="/css/common.css" rel="stylesheet" media="all">
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/signup.js"></script>
+</head>
+<body>
+	<div class="centered-form">
+		<div id="msg-div"></div>
+		<div class="spacer"></div>
+		<form id="signup-form" class="form-content" method="post"
+			action="signup/complete">
+			<div class="row-block">
+				<div class="col-block-left">
+					<label for="loginid">ログインID:</label>
+				</div>
+				<div class="col-block-right">
+					<input name="loginId" autofocus="autofocus" />
+				</div>
+			</div>
+			<div class="row-block">
+				<div class="col-block-left">
+					<label for="password">パスワード:</label>
+				</div>
+				<div class="col-block-right">
+					<input type="password" name="password" />
+				</div>
+			</div>
+			<div class="row-block">
+				<div class="col-block-left"></div>
+				<div class="col-block-right">
+					<div class="btn-block">
+						<div class="spacer"></div>
+						<button id="reg-btn" type="button">登録</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

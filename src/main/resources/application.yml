@@ -1,0 +1,81 @@
+debug: true
+logging:
+  config: classpath:log4j2.xml
+server:
+   port: 80
+   tomcat:
+    uri-encoding: utf-8
+   servlet:
+      contextPath: /
+      session:
+         timeout: -1
+   compression:
+      enabled: true
+spring:
+   jackson:
+      deserialization:
+         accept-empty-array-as-null-object: true
+         accept-empty-string-as-null-object: true
+      default-property-inclusion: non-empty
+   mvc:
+      view:
+         prefix: /pages/
+         suffix: .html
+   resources:
+      static-locations:
+      - classpath:/META-INF/resources/
+      - classpath:/resources/
+      - classpath:/static/
+      - classpath:/public/
+        classpath:/resources/properties/error/error
+      - classpath:/META-INF/resources/webjars/
+   jpa:
+      hibernate:
+         ddl-auto: none
+         naming:
+            physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      properties:
+         javax.persistence.validation.mode: none
+         hibernate.max_fetch_depth: 2
+         hibernate.dialect.storage_engine: innodb
+         hibernate.use_sql_comments: true
+         hibernate.format_sql: true
+         hibernate.type: trace
+         hibernate.connection.provider_disables_autocommit: false
+      database-platform: org.hibernate.dialect.MySQL8Dialect
+      show-sql: true
+   datasource:
+      url: jdbc:mysql://localhost:3306/gmo_test?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=UTC&noTimezoneConversionForDateType=true
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: root
+      hikari:
+         minimumIdle: 2
+         maximumPoolSize: 3
+         idleTimeout: 30000
+         poolName: test-hikari-cp
+         maxLifetime: 2000000
+         connectionTimeout: 30000
+         data-source-properties:
+            hibernate:
+               show_sql: true
+               format_sql: true
+               use_sql: true
+               jdbc.time_zone: UTC
+               connection.provider_disables_autocommit: false
+               search:
+                  autoregister_listeners: false
+               bytecode:
+                  use_reflection_optimizer: false
+               dataSource:
+                  cachePrepStmts: true
+                  prepStmtCacheSize: 250
+                  prepStmtCacheSqlLimit: 2048
+                  useServerPrepStmts: true
+                  useLocalSessionState: true
+                  rewriteBatchedStatements: true
+                  cacheResultSetMetadata: true
+                  cacheServerConfiguration: true
+                  elideSetAutoCommits: true
+                  maintainTimeStats: false
+         auto-commit: false

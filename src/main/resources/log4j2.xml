@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="debug">
+	<Properties>
+		<Property name="basePath">./logs/</Property>
+	</Properties>
+
+	<Appenders>
+
+		<!-- Console Appender -->
+		<Console name="CONSOLE" target="SYSTEM_OUT">
+			<PatternLayout charset="UTF-8"
+				pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %l{36} - %msg%n" />
+		</Console>
+
+		<RollingFile name="generalLogger"
+			fileName="${basePath}/app-info.log"
+			filePattern="${basePath}/app-info-%d{yyyy-MM-dd}.log">
+			<PatternLayout>
+				<charset>UTF-8</charset>
+				<pattern>
+					[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+				</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Root level="all">
+			<AppenderRef ref="generalLogger" />
+			<AppenderRef ref="CONSOLE" />
+		</Root>
+		<Logger name="org.hibernate.SQL" level="debug"
+			additivity="false">
+			<AppenderRef ref="CONSOLE" />
+		</Logger>
+		<Logger name="org.springframework.context.support"
+			level="debug" additivity="false">
+			<AppenderRef ref="CONSOLE" />
+		</Logger>
+		<Logger name="org.hibernate.validator" level="debug"
+			additivity="false">
+			<AppenderRef ref="CONSOLE" />
+		</Logger>
+		<Logger name="com.zaxxer.hikari.HikariConfig" level="off"
+			additivity="false">
+			<AppenderRef ref="CONSOLE" />
+		</Logger>
+		<Logger name="com.zaxxer.hikari.pool.HikariPool" level="off"
+			additivity="false">
+			<AppenderRef ref="CONSOLE" />
+		</Logger>
+	</Loggers>
+</Configuration>
